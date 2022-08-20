@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Activity\\Parking System\\Vehicle\\Vehicle.csproj": {}
+    "D:\\Parking\\Parking System\\Vehicle\\Vehicle.csproj": {}
   },
   "projects": {
-    "F:\\Activity\\Parking System\\Vehicle\\Vehicle.csproj": {
+    "D:\\Parking\\Parking System\\Vehicle\\Vehicle.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Activity\\Parking System\\Vehicle\\Vehicle.csproj",
+        "projectUniqueName": "D:\\Parking\\Parking System\\Vehicle\\Vehicle.csproj",
         "projectName": "Vehicle",
-        "projectPath": "F:\\Activity\\Parking System\\Vehicle\\Vehicle.csproj",
-        "packagesPath": "C:\\Users\\sanke\\.nuget\\packages\\",
-        "outputPath": "F:\\Activity\\Parking System\\Vehicle\\obj\\",
+        "projectPath": "D:\\Parking\\Parking System\\Vehicle\\Vehicle.csproj",
+        "packagesPath": "C:\\Users\\_drag\\.nuget\\packages\\",
+        "outputPath": "D:\\Parking\\Parking System\\Vehicle\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sanke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\_drag\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,13 +39,30 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.25, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -57,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

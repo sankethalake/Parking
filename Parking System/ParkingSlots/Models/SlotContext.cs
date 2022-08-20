@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ParkingSlots.Models
 {
-    public class SlotContext: DbContext
+    public class SlotContext : DbContext
     {
-        public SlotContext(DbContextOptions options): base(options)
+        public SlotContext(DbContextOptions options) : base(options)
         {
 
         }
