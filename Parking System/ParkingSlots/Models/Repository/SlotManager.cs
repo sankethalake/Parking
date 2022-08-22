@@ -4,7 +4,7 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace ParkingSlots.Models.Repository
 {
-    public class SlotManager: ISlotRepository<Slot>
+    public class SlotManager : ISlotRepository<Slot>
     {
         readonly SlotContext _slotContext;
         public SlotManager(SlotContext context)
@@ -21,7 +21,7 @@ namespace ParkingSlots.Models.Repository
         //returns all parked slots
         public IEnumerable<Slot> GetParkedSlots()
         {
-            return _slotContext.Slots.Where(s => s.IsParked==true);
+            return _slotContext.Slots.Where(s => s.IsParked == true);
         }
 
         //returns all unparked slots
@@ -29,8 +29,8 @@ namespace ParkingSlots.Models.Repository
         {
             return _slotContext.Slots.Where(s => s.IsParked == false);
         }
-    }
-    public Slot Get(long id)
+
+        public Slot Get(long id)
         {
             return _slotContext.Slots
                   .FirstOrDefault(e => e.SlotID == id);
@@ -43,7 +43,7 @@ namespace ParkingSlots.Models.Repository
         public void Update(Slot slot, Slot entity)
         {
             slot.SlotID = entity.SlotID;
-            slot.Floor  = entity.Floor;
+            slot.Floor = entity.Floor;
             slot.IsParked = entity.IsParked;
             slot.Type = entity.Type;
             _slotContext.SaveChanges();
@@ -53,6 +53,5 @@ namespace ParkingSlots.Models.Repository
             _slotContext.Slots.Remove(slots);
             _slotContext.SaveChanges();
         }
-
-        
+    }    
 }
