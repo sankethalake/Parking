@@ -33,6 +33,31 @@ namespace ParkingSlots.Controllers
             }
             return Ok(slot);
         }
+
+        // GET: api/Employee/5
+        [HttpGet()]
+        public IActionResult GetParkedSlots()
+        {
+            IEnumerable<Slot> slot = _dataRepository.GetParkedSlots();
+            if (slot == null)
+            {
+                return NotFound("The Slot record couldn't be found.");
+            }
+            return Ok(slot);
+        }
+
+        // GET: api/Employee/5
+        [HttpGet()]
+        public IActionResult GetUnparkedSlots()
+        {
+            IEnumerable<Slot> slot = _dataRepository.GetUnparkedSlots();
+            if (slot == null)
+            {
+                return NotFound("The Slot record couldn't be found.");
+            }
+            return Ok(slot);
+        }
+
         // POST: api/Employee
         [HttpPost]
         public IActionResult Post([FromBody] Slot slot)

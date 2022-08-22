@@ -11,11 +11,26 @@ namespace ParkingSlots.Models.Repository
         {
             _slotContext = context;
         }
+
+        //returns all slots
         public IEnumerable<Slot> GetAll()
         {
             return _slotContext.Slots.ToList();
         }
-        public Slot Get(long id)
+
+        //returns all parked slots
+        public IEnumerable<Slot> GetParkedSlots()
+        {
+            return _slotContext.Slots.Where(s => s.IsParked==true);
+        }
+
+        //returns all unparked slots
+        public IEnumerable<Slot> GetUnparkedSlots()
+        {
+            return _slotContext.Slots.Where(s => s.IsParked == false);
+        }
+    }
+    public Slot Get(long id)
         {
             return _slotContext.Slots
                   .FirstOrDefault(e => e.SlotID == id);
@@ -38,5 +53,6 @@ namespace ParkingSlots.Models.Repository
             _slotContext.Slots.Remove(slots);
             _slotContext.SaveChanges();
         }
-    }
+
+        
 }
