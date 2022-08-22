@@ -30,6 +30,7 @@ namespace VehicleMicroservice
             services.AddDbContext<VehicleContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:VehicleDb"]));
             services.AddScoped<IVehicleRepository<Vehicle>, VehicleManager>();
             services.AddControllers();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +48,14 @@ namespace VehicleMicroservice
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            //swagger configurations
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json","MyAPI");
             });
         }
     }

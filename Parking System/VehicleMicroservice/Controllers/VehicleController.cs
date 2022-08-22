@@ -39,7 +39,7 @@ namespace VehicleMicroservice.Controllers
         {
             if (vehicle == null)
             {
-                return BadRequest("Employee is null.");
+                return BadRequest("Vehicle is null.");
             }
             _dataRepository.Add(vehicle);
             return Ok("Vehicle Created");
@@ -62,13 +62,13 @@ namespace VehicleMicroservice.Controllers
         //}
         // DELETE: api/Employee/5
 
-        [HttpDelete("{id}")]
+        [HttpDelete()]
         public IActionResult Delete(string vehicleNumber)
         {
             Vehicle vehicle = _dataRepository.Get(vehicleNumber);
             if (vehicle == null)
             {
-                return NotFound("The Employee record couldn't be found.");
+                return NotFound("The vehicle record couldn't be found.");
             }
             _dataRepository.Delete(vehicle);
             return NoContent();

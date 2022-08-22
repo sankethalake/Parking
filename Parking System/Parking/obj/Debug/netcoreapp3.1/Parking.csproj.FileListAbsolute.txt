@@ -58,3 +58,8 @@ D:\Parking\Parking System\Parking\obj\Debug\netcoreapp3.1\Parking.csproj.CopyCom
 D:\Parking\Parking System\Parking\obj\Debug\netcoreapp3.1\Parking.dll
 D:\Parking\Parking System\Parking\obj\Debug\netcoreapp3.1\Parking.pdb
 D:\Parking\Parking System\Parking\obj\Debug\netcoreapp3.1\Parking.genruntimeconfig.cache
+D:\Parking\Parking System\Parking\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\Parking\Parking System\Parking\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\Parking\Parking System\Parking\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Parking\Parking System\Parking\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Parking\Parking System\Parking\obj\Debug\netcoreapp3.1\Parking.MvcApplicationPartsAssemblyInfo.cs

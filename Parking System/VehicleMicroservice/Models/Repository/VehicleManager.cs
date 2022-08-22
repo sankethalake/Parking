@@ -12,6 +12,7 @@ namespace VehicleMicroservice.Models.Repository
         }
         public void Add(Vehicle entity)
         {
+            entity.VehicleNumber = entity.VehicleNumber.ToUpper();
             _vehicleContext.Vehicles.Add(entity);
             _vehicleContext.SaveChanges();
         }
@@ -24,12 +25,12 @@ namespace VehicleMicroservice.Models.Repository
 
         public Vehicle Get(string vehicleNumber)
         {
-            return _vehicleContext.Vehicles.FirstOrDefault(v => v.VehicleNumber == vehicleNumber);
+            return _vehicleContext.Vehicles.FirstOrDefault(v => v.VehicleNumber==vehicleNumber);
         }
 
         public IEnumerable<Vehicle> GetAll()
         {
-            return _vehicleContext.Vehicles.ToList();
+                return _vehicleContext.Vehicles.ToList();
         }
     }
 }

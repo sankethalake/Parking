@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VehicleMicroservice.Models;
+using ParkingSlots.Models;
 
-namespace VehicleMicroservice.Migrations
+namespace ParkingSlots.Migrations
 {
-    [DbContext(typeof(VehicleContext))]
-    [Migration("20220820104026_FirstMigrations")]
+    [DbContext(typeof(SlotContext))]
+    [Migration("20220822073407_FirstMigrations")]
     partial class FirstMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,23 +20,26 @@ namespace VehicleMicroservice.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("VehicleMicroservice.Models.Vehicle", b =>
+            modelBuilder.Entity("ParkingSlots.Models.Slot", b =>
                 {
-                    b.Property<string>("VehicleNumber")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("SlotID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Company")
+                    b.Property<string>("Floor")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Model")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsParked")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
-                    b.HasKey("VehicleNumber");
+                    b.HasKey("SlotID");
 
-                    b.ToTable("Vehicles");
+                    b.ToTable("Slots");
                 });
 #pragma warning restore 612, 618
         }

@@ -58,3 +58,8 @@ D:\Parking\Parking System\VehicleMicroservice\obj\Debug\netcoreapp3.1\VehicleMic
 D:\Parking\Parking System\VehicleMicroservice\obj\Debug\netcoreapp3.1\VehicleMicroservice.dll
 D:\Parking\Parking System\VehicleMicroservice\obj\Debug\netcoreapp3.1\VehicleMicroservice.pdb
 D:\Parking\Parking System\VehicleMicroservice\obj\Debug\netcoreapp3.1\VehicleMicroservice.genruntimeconfig.cache
+D:\Parking\Parking System\VehicleMicroservice\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\Parking\Parking System\VehicleMicroservice\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\Parking\Parking System\VehicleMicroservice\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Parking\Parking System\VehicleMicroservice\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Parking\Parking System\VehicleMicroservice\obj\Debug\netcoreapp3.1\VehicleMicroservice.MvcApplicationPartsAssemblyInfo.cs

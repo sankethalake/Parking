@@ -21,16 +21,19 @@ namespace VehicleMicroservice.Migrations
             modelBuilder.Entity("VehicleMicroservice.Models.Vehicle", b =>
                 {
                     b.Property<string>("VehicleNumber")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<string>("Company")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Model")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("VehicleNumber");
 

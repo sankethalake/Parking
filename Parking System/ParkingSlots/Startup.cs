@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ParkingSlots.Models;
+using ParkingSlots.Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +27,12 @@ namespace ParkingSlots
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<SlotContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:SlotDb"]));
+            services.AddScoped<ISlotRepository<Slot>, SlotManager>();
             services.AddControllers();
+
+            //Swagger Configurations
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +50,14 @@ namespace ParkingSlots
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            //swagger Endpoints
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyAPI");
             });
         }
     }
