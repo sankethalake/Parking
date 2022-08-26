@@ -33,6 +33,11 @@ namespace ParkingSlots
 
             //Swagger Configurations
             services.AddSwaggerGen();
+            // Default Policy
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +50,8 @@ namespace ParkingSlots
 
             app.UseRouting();
 
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -55,10 +62,13 @@ namespace ParkingSlots
             //swagger Endpoints
             app.UseSwagger();
 
+            app.UseDeveloperExceptionPage();
+
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyAPI");
             });
+
         }
     }
 }

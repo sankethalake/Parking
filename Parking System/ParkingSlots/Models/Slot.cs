@@ -18,10 +18,10 @@ namespace ParkingSlots.Models
         [Required]
         public Boolean IsParked{ get; set; }
         [Required]
-        public VehicleType Type { get; set; }
+        public SlotType Type { get; set; }
 
     }
-    public enum VehicleType
+    public enum SlotType
     {
         Two_Wheeler,
         Four_Wheeler,

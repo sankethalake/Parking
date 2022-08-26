@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Parking.Models.Repositoy;
 using Parking.Models;
+using System.Collections.Generic;
+
 
 namespace Parking.Controllers
 {
@@ -43,5 +45,14 @@ namespace Parking.Controllers
             _dataRepository.UpdateParking(parkingToUpdate, parking);
             return NoContent();
         }
+
+    //    // GET: api/Employee
+    //    [HttpGet()]
+    //    public IActionResult GetByVehicle([FromBody] Vehicle vehicle)
+    //    {
+    //        IEnumerable<Models.Parking> slot = _dataRepository.GetByVehicle(vehicle);
+    //        return Ok(slot);
+    //    }
+    //    // GET: api/Employee/5
     }
 }

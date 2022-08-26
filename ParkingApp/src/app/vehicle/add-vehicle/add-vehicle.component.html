@@ -1,1 +1,61 @@
-<p>add-vehicle works!</p>
+<div class="container">
+<h2 class="list-group-item text-center">----- Add Vehicle -----</h2><br />
+<form class="col-6" #vehicleData="ngForm" autocomplete="off" (ngSubmit)="onSubmitVehicle(vehicleData)">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Vehicle Number</span>
+    </div>
+    <input name="vehicleNumber" type="text" class="form-control" placeholder="Enter Vehicle Number" 
+      id="vehicleNumber" #vehicleNumber="ngModel" [(ngModel)]="vehicleModel.vehicleNumber"
+      minlength="6" required/> &nbsp; &nbsp; &nbsp;
+      <div style="color:red;" *ngIf="!vehicleNumber?.valid && (vehicleNumber?.dirty || vehicleNumber?.touched)">
+        Invalid Vehicle Number
+     </div>
+  </div>
+  <br />
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Company</span>
+    </div>
+    <input name="company" type="text" class="form-control" placeholder="Enter Company Name" 
+      id="company" #company="ngModel" [(ngModel)]="vehicleModel.company" 
+      min="4" max="20" required/> &nbsp; &nbsp; &nbsp;
+      <div style="color:red;" *ngIf="!company?.valid && (company?.dirty || company?.touched)">
+        Invalid Company Name. Enter Company Name between 4 and 20.
+     </div>
+  </div>
+  <br />
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Model</span>
+    </div>
+    <input name="model" type="text" class="form-control" placeholder="Enter Vehicle Model" 
+      id="model" #model="ngModel" 
+       [(ngModel)]="vehicleModel.model" required/> &nbsp; &nbsp; &nbsp;
+       <div style="color:red;" *ngIf="!model?.valid && (model?.dirty || model?.touched)">
+         Invalid Model
+      </div>
+  </div> 
+  <br />
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Vehicle Type</span>
+    </div>
+    <!-- <input name="gender" type="number" min="1" max="2" class="form-control" placeholder="Enter Player Gender" 
+      id="gender" #gender="ngModel" [(ngModel)]="playerModel.gender" required/> -->
+      <select value="Choose Vehicle Type" class="form-select" aria-label="Default select example" name="type" 
+      id="type" #type="ngModel" [(ngModel)]="vehicleModel.type" placeholder="Select the type" required>
+      <option value=1>Two Wheeler</option>
+      <option value=2>Four Wheeler</option>
+      </select>
+      &nbsp; &nbsp; &nbsp;
+      <div style="color:red;" *ngIf="!type?.valid && (type?.dirty || type?.touched)">
+        Invalid Vehicle Type
+     </div>
+  </div>
+  <br />
+  <button type="submit" [disabled]="vehicleData.invalid"  class="btn btn-success"> Submit </button>
+  <br />
+  <br />
+</form>
+</div>

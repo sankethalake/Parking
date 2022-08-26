@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ParkingSlots.Models
+namespace Parking.Models
 {
     public class Slot
     {
@@ -18,10 +18,10 @@ namespace ParkingSlots.Models
         [Required]
         public Boolean IsParked{ get; set; }
         [Required]
-        public VehicleType Type { get; set; }
+        public SlotType Type { get; set; }
 
     }
-    public enum VehicleType
+    public enum SlotType
     {
         Two_Wheeler,
         Four_Wheeler,

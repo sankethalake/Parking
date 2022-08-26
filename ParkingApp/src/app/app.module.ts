@@ -24,6 +24,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SlotService } from './slot/slot.service';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
+import { AddSlotComponent } from './slot/add-slot/add-slot.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DeleteSlotsComponent,
     ParkingComponent,
     AddParkingComponent,
-    UpdateParkingComponent
+    UpdateParkingComponent,
+    HomeComponent,
+    AdminComponent,
+    AddSlotComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +62,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       progressBar:true
     })
   ],
-  providers: [VehicleService],
+  providers: [VehicleService,SlotService,SlotService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

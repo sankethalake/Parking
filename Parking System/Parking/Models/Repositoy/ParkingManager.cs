@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+
 
 namespace Parking.Models.Repositoy
 {
@@ -19,6 +21,16 @@ namespace Parking.Models.Repositoy
         public Parking Get(int id)
         {
             return _parkingContext.Parking.FirstOrDefault(e => e.Id == id);
+        }
+
+        public IEnumerable<Parking> GetBySlot(Parking parking)
+        {
+            return _parkingContext.Parking.Where(p => p.ParkingSlots == parking.ParkingSlots);
+        }
+
+        public IEnumerable<Parking> GetByVehicle(Vehicle vehicle)
+        {
+            return _parkingContext.Parking.Where(p => p.Vehicle == vehicle);
         }
 
         public void UpdateParking(Parking parking, Parking entity)

@@ -1,1 +1,43 @@
-<p>get-slots works!</p>
+<html>
+
+<head>
+  <title>Parking Slots</title>
+</head>
+
+<body>
+  <div class="container">
+
+
+    <table class="table table-striped">
+      <thead class="table-primary">
+
+        <tr>
+          <th scope="col">SLOT ID</th>
+          <th scope="col">FLOOR</th>
+          <th scope="col">AVAILABILITY</th>
+          <th scope="col">SLOT TYPE</th>
+          <th scope="col">OPTIONS</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let s of slots">
+          <td>{{s.slotID}}</td>
+          <td>{{s.floor}}</td>
+          <td *ngIf="s.isParked">Available</td>
+          <td *ngIf="!s.isParked">Unavailable</td>
+          <td *ngIf="s.type==0">Two Wheeler</td>
+          <td *ngIf="s.type==1">Four Wheeler</td>
+          <td>
+            <div class="d-grid gap-2 d-md-block">
+              <button type="button" (click)="ToVehicle(s.slotID)" class="btn btn-light">Book Slot</button>
+              <button type="button" (click)="DeleteSlot(s.slotID)" class="btn btn-light">Delete Slot</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

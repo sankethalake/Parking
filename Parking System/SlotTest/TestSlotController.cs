@@ -19,7 +19,7 @@ namespace SlotTest
         [SetUp]
         public void Setup()
         {
-            mockDataRepository = new Mock<ISlotRepository<Slot>();
+            mockDataRepository = new Mock<ISlotRepository<Slot>>();
             _slotController = new SlotController(mockDataRepository.Object);
         }
 

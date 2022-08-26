@@ -1,7 +1,7 @@
-﻿using ParkingSlots.Models;
+﻿
 using System;
 using System.ComponentModel.DataAnnotations;
-using VehicleMicroservice.Models;
+
 
 namespace Parking.Models
 {

@@ -31,6 +31,11 @@ namespace VehicleMicroservice
             services.AddScoped<IVehicleRepository<Vehicle>, VehicleManager>();
             services.AddControllers();
             services.AddSwaggerGen();
+            // Default Policy
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +47,7 @@ namespace VehicleMicroservice
             }
 
             app.UseRouting();
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 

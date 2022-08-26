@@ -23,8 +23,8 @@ namespace ParkingSlots.Controllers
             return Ok(slot);
         }
         // GET: api/Employee/5
-        [HttpGet("{id}", Name = "Get")]
-        public IActionResult Get(int slotID)
+        [HttpGet("getSlot/{id}", Name = "GetSlot")]
+        public IActionResult GetSlot(int slotID)
         {
             Slot slot = _dataRepository.Get(slotID);
             if (slot == null)
@@ -35,7 +35,7 @@ namespace ParkingSlots.Controllers
         }
 
         // GET: api/Employee/5
-        [HttpGet()]
+        [HttpGet("getParkedSlots",Name = "getParkedSlots")]
         public IActionResult GetParkedSlots()
         {
             IEnumerable<Slot> slot = _dataRepository.GetParkedSlots();
@@ -47,7 +47,7 @@ namespace ParkingSlots.Controllers
         }
 
         // GET: api/Employee/5
-        [HttpGet()]
+        [HttpGet("getUnparkedSlots", Name = "getUnparkedSlots")]
         public IActionResult GetUnparkedSlots()
         {
             IEnumerable<Slot> slot = _dataRepository.GetUnparkedSlots();

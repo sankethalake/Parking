@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VehicleMicroservice.Models
+namespace Parking.Models
 {
     public class Vehicle
     {

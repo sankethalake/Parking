@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using Parking.Models;
 using Parking.Models.Repositoy;
 using System;
@@ -32,7 +33,10 @@ namespace Parking
             services.AddControllers();
 
             //Swagger Configurations
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Parking", Version = "v1", });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +51,8 @@ namespace Parking
 
             app.UseAuthorization();
 
+            app.UseDeveloperExceptionPage();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -57,7 +63,7 @@ namespace Parking
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyAPI");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Parking");
             });
         }
     }
