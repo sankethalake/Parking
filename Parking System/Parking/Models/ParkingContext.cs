@@ -9,5 +9,7 @@ namespace Parking.Models
 
         }
         public DbSet<Parking> Parking { get; set; }
+        public DbSet<Slot> Slots { get; set; }
+        public DbSet<Vehicle> vehicles{ get; set; }
     }
 }

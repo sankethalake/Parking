@@ -8,11 +8,14 @@ import { Observable } from 'rxjs';
 export class ParkingService {
   readonly APIurl = "http://localhost:11635/api/Parking";
 
-  constructor(private http:HttpClient) { }
-  addParking(parking:any):Observable<any>{
-    return this.http.post(this.APIurl , parking);
+  constructor(private http: HttpClient) { }
+  addParking(parking: any): Observable<any> {
+    return this.http.post(this.APIurl, parking);
   }
-  updateParking(parking:any):Observable<any>{
-    return this.http.put(this.APIurl , parking);
+  updateParking(parking: any) {
+    return this.http.put(this.APIurl, parking);
+  }
+  getParkingBySlot(slotId: any) {
+    return this.http.get(this.APIurl + "/" + slotId);
   }
 }

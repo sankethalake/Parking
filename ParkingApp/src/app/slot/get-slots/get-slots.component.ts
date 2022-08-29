@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class GetSlotsComponent implements OnInit {
   slots: any = [];
-  slotToBeBooked: any;
+  tempArray: any = [];
   constructor(public service: SlotService, private shared: SharedService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -27,14 +27,35 @@ export class GetSlotsComponent implements OnInit {
     )
   }
 
-  ToVehicle(slotID: any) {
-    this.slotToBeBooked = this.service.getSlotByid(slotID)
-    this.shared.setData(this.slotToBeBooked);
+  GetAvailableSlots() {
+    for (var temp of this.slots) {
+      if (!temp.isParked) {
+        this.tempArray.add(temp);
+      }
+    }
+    this.slots = this.tempArray;
+  }
+
+  ToVehicle(s: any) {
+    if (s.isParked) {
+      this.toastr.warning("Slot Unavailable");
+    }
+    this.shared.setData(s);
     this.router.navigateByUrl('vehicle/add-vehicle')
   }
 
   DeleteSlot(slotID: any) {
-    this.toastr.info("Delete need to be added in microservice");
-    this.router.navigateByUrl('slot/all-slots');
+    this.service.deleteSlot(slotID).subscribe(
+      (res: any) => {
+        this.toastr.success(res.message);
+        this.router.navigateByUrl('slot/all-slots');
+      },
+      err => {
+        this.toastr.error(err.error);
+        this.router.navigateByUrl('slot/all-slots');
+      }
+    )
+
+
   }
 }

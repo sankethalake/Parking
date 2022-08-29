@@ -17,7 +17,15 @@ namespace Parking.Controllers
             _dataRepository = dataRepository;
         }
 
-        // POST: api/Employee
+        // GET: api/Parking
+        [HttpGet]
+        public IActionResult Get()
+        {
+            IEnumerable<Models.Parking> parking= _dataRepository.GetAllParking();
+            return Ok(parking);
+        }
+
+        // POST: api/Parking
         [HttpPost]
         public IActionResult Post([FromBody] Models.Parking parking)
         {
@@ -26,7 +34,7 @@ namespace Parking.Controllers
                 return BadRequest("Slot is null.");
             }
             _dataRepository.AddParking(parking);
-            return Ok("Parking allocated");
+            return Ok(new { message = "Parking allocated" });
         }
 
         //PUT: api/Employee/5
@@ -46,13 +54,22 @@ namespace Parking.Controllers
             return NoContent();
         }
 
-    //    // GET: api/Employee
-    //    [HttpGet()]
-    //    public IActionResult GetByVehicle([FromBody] Vehicle vehicle)
-    //    {
-    //        IEnumerable<Models.Parking> slot = _dataRepository.GetByVehicle(vehicle);
-    //        return Ok(slot);
-    //    }
-    //    // GET: api/Employee/5
+        //GET: api/Employee
+
+           [HttpGet("{getBySlot}")]
+            public IActionResult GetBySlot(int getBySlot)
+        {
+            Models.Parking parking = _dataRepository.GetBySlot(getBySlot);
+            return Ok(parking);
+        }
+
+        //    // GET: api/Employee
+        //    [HttpGet()]
+        //    public IActionResult GetByVehicle([FromBody] Vehicle vehicle)
+        //    {
+        //        IEnumerable<Models.Parking> slot = _dataRepository.GetByVehicle(vehicle);
+        //        return Ok(slot);
+        //    }
+        //    // GET: api/Employee/5
     }
 }

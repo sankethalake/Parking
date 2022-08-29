@@ -10,7 +10,7 @@ namespace Parking.Models
     public class Slot
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         [Required]
         public int SlotID { get; set; }
         [Required]

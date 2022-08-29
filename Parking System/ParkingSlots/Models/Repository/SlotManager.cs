@@ -37,6 +37,7 @@ namespace ParkingSlots.Models.Repository
         }
         public void Add(Slot entity)
         {
+            entity.Floor = entity.Floor.ToUpper();
             _slotContext.Slots.Add(entity);
             _slotContext.SaveChanges();
         }

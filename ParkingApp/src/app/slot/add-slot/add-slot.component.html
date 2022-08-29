@@ -18,8 +18,8 @@
             </div>
             <select value="Choose Slot Type" class="form-select" aria-label="Default select example" name="type"
                 id="type" #type="ngModel" [(ngModel)]="slotModel.type" placeholder="Select the type" required>
-                <option value=1>Two Wheeler</option>
-                <option value=2>Four Wheeler</option>
+                <option value=0>Two Wheeler</option>
+                <option value=1>Four Wheeler</option>
             </select>
             &nbsp; &nbsp; &nbsp;
             <div style="color:red;" *ngIf="!type?.valid && (type?.dirty || type?.touched)">

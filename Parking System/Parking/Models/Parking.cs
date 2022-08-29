@@ -9,8 +9,8 @@ namespace Parking.Models
     {
         [Key]
         public int Id { get; set; }
-        public Vehicle Vehicle { get; set; }
-        public Slot ParkingSlots { get; set; }
+        public virtual Vehicle Vehicle { get; set; }
+        public virtual Slot Slot { get; set; }
         public DateTime ParkedTime { get; set; }
         public DateTime UnparkedTime { get; set; }
     }

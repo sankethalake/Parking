@@ -1,1 +1,17 @@
-<p>add-parking works!</p>
+<div class="d-flex justify-content-center">
+    <div class="card">
+        <div class="card-header">
+            Book Parking
+        </div>
+        <div class="card-body">
+            <h6>Slot ID : {{slot.slotID}}</h6>
+            <h6>Floor : {{slot.floor}}</h6>
+            <h6 *ngIf="vehicle.type==0">Vehicle Type : Two Wheeler</h6>
+            <h6 *ngIf="vehicle.type==1">Vehicle Type : Four Wheeler</h6>
+            <h6>Vehicle Number : {{vehicle.vehicleNumber}}</h6>
+            <!-- <h6>Vehicle Company : {{vehicle.company}}</h6>
+            <h6>Vehicle Model : {{vehicle.model}}</h6> -->
+            <a (click)="BookParking()" class="btn btn-primary">Book Parking</a>
+        </div>
+    </div>
+</div>

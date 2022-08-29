@@ -2,7 +2,7 @@
 
 namespace Parking.Migrations
 {
-    public partial class sanket : Migration
+    public partial class CleanStart : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

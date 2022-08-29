@@ -24,9 +24,9 @@ namespace ParkingSlots.Controllers
         }
         // GET: api/Employee/5
         [HttpGet("getSlot/{id}", Name = "GetSlot")]
-        public IActionResult GetSlot(int slotID)
+        public IActionResult GetSlot(int id)
         {
-            Slot slot = _dataRepository.Get(slotID);
+            Slot slot = _dataRepository.Get(id);
             if (slot == null)
             {
                 return NotFound("The Slot record couldn't be found.");
@@ -67,7 +67,7 @@ namespace ParkingSlots.Controllers
                 return BadRequest("Slot is null.");
             }
             _dataRepository.Add(slot);
-            return Ok("Slot Created");
+            return Ok(new {message="Slot Created"});
         }
 
         //PUT: api/Employee/5
@@ -92,12 +92,13 @@ namespace ParkingSlots.Controllers
         public IActionResult Delete(int slotId)
         {
             Slot slot = _dataRepository.Get(slotId);
+            System.Console.WriteLine(slotId);
             if (slot == null)
             {
-                return NotFound("The slot record couldn't be found.");
+                return NotFound("Slot not found.");
             }
             _dataRepository.Delete(slot);
-            return NoContent();
+            return Ok(new {message="Slot Deleted"});
         }
     }
 }

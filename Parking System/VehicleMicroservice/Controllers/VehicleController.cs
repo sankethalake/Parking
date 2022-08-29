@@ -39,10 +39,10 @@ namespace VehicleMicroservice.Controllers
         {
             if (vehicle == null)
             {
-                return BadRequest("Vehicle is null.");
+                return BadRequest(new {message= "Vehicle is null." });
             }
             _dataRepository.Add(vehicle);
-            return Ok("Vehicle Created");
+            return Ok(vehicle);
         }
         //PUT: api/Employee/5
         //[HttpPut("{id}")]
@@ -68,7 +68,7 @@ namespace VehicleMicroservice.Controllers
             Vehicle vehicle = _dataRepository.Get(vehicleNumber);
             if (vehicle == null)
             {
-                return NotFound("The vehicle record couldn't be found.");
+                return NotFound("Vehicle not found.");
             }
             _dataRepository.Delete(vehicle);
             return NoContent();

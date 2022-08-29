@@ -8,23 +8,27 @@ import { Observable } from 'rxjs';
 export class SlotService {
   readonly APIurl = "http://localhost:57481/api/Slot";
 
-  constructor(private http:HttpClient) { }
-  getSlot():Observable<any[]>{
+  constructor(private http: HttpClient) { }
+  getSlot(): Observable<any[]> {
     return this.http.get<any>(this.APIurl);
   }
-  getSlotByid(id:number):Observable<any[]>{
-    return this.http.get<any>(this.APIurl + id);
+  getSlotByid(id: number) {
+    return this.http.get(this.APIurl + "/getSlot/" + id);
   }
-  getParkedSlot():Observable<any[]>{
-    return this.http.get<any>(this.APIurl+"getParkedSlots");
+  getParkedSlot(): Observable<any[]> {
+    return this.http.get<any>(this.APIurl + "getParkedSlots");
   }
-  getUnparkedSlot():Observable<any[]>{
-    return this.http.get<any>(this.APIurl+"getUnparkedSlots");
+  getUnparkedSlot(): Observable<any[]> {
+    return this.http.get<any>(this.APIurl + "getUnparkedSlots");
   }
-  addSlot(slot:any):Observable<any>{
-    return this.http.post(this.APIurl , slot);
+  addSlot(slot: any): Observable<any> {
+    return this.http.post(this.APIurl, slot);
   }
-  deleteVehicle(slotId:any):Observable<any>{
-    return this.http.delete(this.APIurl+slotId);
+  deleteSlot(slotId: any) {
+    console.log(slotId);
+    return this.http.delete(this.APIurl + "/" + Number(slotId));
+  }
+  updateSlot(slot: any): Observable<any> {
+    return this.http.put(this.APIurl, slot);
   }
 }

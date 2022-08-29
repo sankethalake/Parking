@@ -29,27 +29,27 @@ namespace Parking.Migrations
                     b.Property<DateTime>("ParkedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ParkingSlotsSlotID")
+                    b.Property<int?>("SlotId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UnparkedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("VehicleNumber")
-                        .HasColumnType("nvarchar(10)");
+                    b.Property<int?>("VehicleId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ParkingSlotsSlotID");
+                    b.HasIndex("SlotId");
 
-                    b.HasIndex("VehicleNumber");
+                    b.HasIndex("VehicleId");
 
                     b.ToTable("Parking");
                 });
 
-            modelBuilder.Entity("ParkingSlots.Models.Slot", b =>
+            modelBuilder.Entity("Parking.Models.Slot", b =>
                 {
-                    b.Property<int>("SlotID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -61,19 +61,23 @@ namespace Parking.Migrations
                     b.Property<bool>("IsParked")
                         .HasColumnType("bit");
 
+                    b.Property<int>("SlotID")
+                        .HasColumnType("int");
+
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.HasKey("SlotID");
+                    b.HasKey("Id");
 
-                    b.ToTable("Slot");
+                    b.ToTable("Slots");
                 });
 
-            modelBuilder.Entity("VehicleMicroservice.Models.Vehicle", b =>
+            modelBuilder.Entity("Parking.Models.Vehicle", b =>
                 {
-                    b.Property<string>("VehicleNumber")
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Company")
                         .IsRequired()
@@ -86,20 +90,25 @@ namespace Parking.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.HasKey("VehicleNumber");
+                    b.Property<string>("VehicleNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
-                    b.ToTable("Vehicle");
+                    b.HasKey("Id");
+
+                    b.ToTable("vehicles");
                 });
 
             modelBuilder.Entity("Parking.Models.Parking", b =>
                 {
-                    b.HasOne("ParkingSlots.Models.Slot", "ParkingSlots")
+                    b.HasOne("Parking.Models.Slot", "Slot")
                         .WithMany()
-                        .HasForeignKey("ParkingSlotsSlotID");
+                        .HasForeignKey("SlotId");
 
-                    b.HasOne("VehicleMicroservice.Models.Vehicle", "Vehicle")
+                    b.HasOne("Parking.Models.Vehicle", "Vehicle")
                         .WithMany()
-                        .HasForeignKey("VehicleNumber");
+                        .HasForeignKey("VehicleId");
                 });
 #pragma warning restore 612, 618
         }

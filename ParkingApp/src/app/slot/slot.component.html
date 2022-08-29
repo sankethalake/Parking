@@ -8,11 +8,58 @@
   <br />
   <div class="container">
     <div class="d-grid gap-2 d-md-block">
-      <button type="button" routerLink="/parkingSlot/all-slots" class="btn btn-light">All Slot</button>
+      <button type="button" (click)="GetSlots()" class="btn btn-light">All Slot</button>
+      <button type="button" (click)="GetAvailableSlots()" class="btn btn-light">Available Slot</button>
+      <!-- <button type="button" (click)="GetUnvailableSlots()" class="btn btn-light">Unavailable Slot</button> -->
       <button type="button" routerLink="/parkingSlot/add-slot" class="btn btn-light">Add Slot</button>
     </div>
   </div>
+  <html>
   <router-outlet></router-outlet>
+
+  <head>
+    <title>Parking Slots</title>
+  </head>
+
+  <body>
+    <div class="container">
+
+
+      <table class="table table-striped">
+        <thead class="table-primary">
+
+          <tr>
+            <th scope="col">SLOT ID</th>
+            <th scope="col">FLOOR</th>
+            <th scope="col">AVAILABILITY</th>
+            <th scope="col">SLOT TYPE</th>
+            <th scope="col">OPTIONS</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let s of slots">
+            <td>{{s.slotID}}</td>
+            <td>{{s.floor}}</td>
+            <td *ngIf="!s.isParked">Available</td>
+            <td *ngIf="s.isParked">Unavailable</td>
+            <td *ngIf="s.type==0">Two Wheeler</td>
+            <td *ngIf="s.type==1">Four Wheeler</td>
+            <td>
+              <div class="d-grid gap-2 d-md-block">
+                <button type="button" (click)="ToVehicle(s)" class="btn btn-light">Click To Park</button>
+                <button type="button" (click)="EndParking(s)" class="btn btn-light">End Parking</button>
+                <button type="button" (click)="DeleteSlot(s.slotID)" class="btn btn-light">Delete Slot</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+
+  </html>
+
 </body>
 
 </html>

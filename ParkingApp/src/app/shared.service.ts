@@ -4,12 +4,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SharedService {
-  data:any
+  slot: any;
+  vehicle: any
   constructor() { }
-  setData(_data:any){
-    this.data = _data
+  // set slot slot
+  setData(_data: any) {
+    this.slot = _data;
   }
-  getData(){
-    return this.data
+  // GEt slot slot
+  getData() {
+    return this.slot
+  }
+
+  // set vehicle slot
+  setVehicle(_data: any) {
+    this.vehicle = _data
+  }
+
+  // GEt vehicle slot
+  getVehicle() {
+    return this.vehicle
   }
 }

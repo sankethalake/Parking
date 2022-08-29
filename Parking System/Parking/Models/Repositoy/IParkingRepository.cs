@@ -7,8 +7,9 @@ namespace Parking.Models.Repositoy
         TEntity Get(int id);
         void AddParking(TEntity parking);
         void UpdateParking(TEntity parking, TEntity entity);
+        IEnumerable<TEntity> GetAllParking();
         //IEnumerable<TEntity> GetByVehicle(Vehicle Vehicle);
-        //IEnumerable<TEntity> GetBySlot(TEntity parking);
+        TEntity GetBySlot(int slotId);
 
 
     }

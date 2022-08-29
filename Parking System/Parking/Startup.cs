@@ -28,7 +28,7 @@ namespace Parking
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ParkingContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:SlotDb"]));
+            services.AddDbContext<ParkingContext>(opts => opts.UseLazyLoadingProxies().UseSqlServer(Configuration["ConnectionString:SlotDb"]));
             services.AddScoped<IParkingRepository<Models.Parking>, ParkingManager>();
             services.AddControllers();
 
@@ -36,6 +36,11 @@ namespace Parking
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Parking", Version = "v1", });
+            });
+            // Default Policy
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
         }
 
@@ -48,6 +53,7 @@ namespace Parking
             }
 
             app.UseRouting();
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 

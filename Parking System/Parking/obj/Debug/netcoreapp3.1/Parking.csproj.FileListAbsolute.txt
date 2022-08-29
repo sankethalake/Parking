@@ -63,3 +63,5 @@ D:\Parking\Parking System\Parking\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore
 D:\Parking\Parking System\Parking\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Parking\Parking System\Parking\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Parking\Parking System\Parking\obj\Debug\netcoreapp3.1\Parking.MvcApplicationPartsAssemblyInfo.cs
+D:\Parking\Parking System\Parking\bin\Debug\netcoreapp3.1\Castle.Core.dll
+D:\Parking\Parking System\Parking\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll

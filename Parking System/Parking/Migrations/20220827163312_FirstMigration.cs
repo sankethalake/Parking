@@ -3,29 +3,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Parking.Migrations
 {
-    public partial class FirstMigrations : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Slot",
+                name: "Slots",
                 columns: table => new
                 {
-                    SlotID = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    SlotID = table.Column<int>(nullable: false),
                     Floor = table.Column<string>(nullable: false),
                     IsParked = table.Column<bool>(nullable: false),
                     Type = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Slot", x => x.SlotID);
+                    table.PrimaryKey("PK_Slots", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Vehicle",
+                name: "vehicles",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     VehicleNumber = table.Column<string>(maxLength: 10, nullable: false),
                     Company = table.Column<string>(nullable: false),
                     Model = table.Column<string>(nullable: false),
@@ -33,7 +36,7 @@ namespace Parking.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vehicle", x => x.VehicleNumber);
+                    table.PrimaryKey("PK_vehicles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -42,8 +45,8 @@ namespace Parking.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    VehicleNumber = table.Column<string>(nullable: true),
-                    ParkingSlotsSlotID = table.Column<int>(nullable: true),
+                    VehicleId = table.Column<int>(nullable: true),
+                    SlotId = table.Column<int>(nullable: true),
                     ParkedTime = table.Column<DateTime>(nullable: false),
                     UnparkedTime = table.Column<DateTime>(nullable: false)
                 },
@@ -51,28 +54,28 @@ namespace Parking.Migrations
                 {
                     table.PrimaryKey("PK_Parking", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Parking_Slot_ParkingSlotsSlotID",
-                        column: x => x.ParkingSlotsSlotID,
-                        principalTable: "Slot",
-                        principalColumn: "SlotID",
+                        name: "FK_Parking_Slots_SlotId",
+                        column: x => x.SlotId,
+                        principalTable: "Slots",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Parking_Vehicle_VehicleNumber",
-                        column: x => x.VehicleNumber,
-                        principalTable: "Vehicle",
-                        principalColumn: "VehicleNumber",
+                        name: "FK_Parking_vehicles_VehicleId",
+                        column: x => x.VehicleId,
+                        principalTable: "vehicles",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Parking_ParkingSlotsSlotID",
+                name: "IX_Parking_SlotId",
                 table: "Parking",
-                column: "ParkingSlotsSlotID");
+                column: "SlotId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Parking_VehicleNumber",
+                name: "IX_Parking_VehicleId",
                 table: "Parking",
-                column: "VehicleNumber");
+                column: "VehicleId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -81,10 +84,10 @@ namespace Parking.Migrations
                 name: "Parking");
 
             migrationBuilder.DropTable(
-                name: "Slot");
+                name: "Slots");
 
             migrationBuilder.DropTable(
-                name: "Vehicle");
+                name: "vehicles");
         }
     }
 }
