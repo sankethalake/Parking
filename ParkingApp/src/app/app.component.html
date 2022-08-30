@@ -19,12 +19,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
+            </li> -->
             <li class="nav-item" style="margin-left: 1180px;">
               <a class="nav-link" href="#">Sign Up</a>
             </li>
@@ -40,17 +40,29 @@
                 <a style="text-align: center;" routerLink="parkingSlot">Check Slots</a><br>
                 <a style="text-align: center;" routerLink="vehicle">Vehicle</a>
               </div> -->
-  <div class="d-flex row justify-content-center">
+  <div class="container">
+    <a style="text-align: center;" (click)="ToParkingSlot()"><b>Click Here To Check Parking</b></a><br>
+  </div>
 
+  <!-- <div className="home__container">
+                <img
+                  className="home__image"
+                  src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGFya2luZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
+                   alt="..." margin="100px"
+                />
+                </div> -->
 
+  <router-outlet></router-outlet>
+  <!-- <div class="d-flex row justify-content-center">
     <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyVV6FZOhNIKjoq29xAvb8933Crh-yNKReCKG07aOkpuiy12IRERoLdU1V35_4hnYgg-Y&usqp=CAU"
+      src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGFya2luZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
       class="img-fluid" alt="..." margin="100px">
     <br>
-    <a style="text-align: center;" (click)="ToParkingSlot()">To Parking</a><br>
-  </div>
+  </div> -->
+
+
   <span></span>
-  <router-outlet></router-outlet>
+
 </body>
 
 </html>

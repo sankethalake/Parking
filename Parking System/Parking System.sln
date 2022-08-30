@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtAuthentication", "Author
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleTest", "VehicleTest\VehicleTest.csproj", "{A1A958B2-255C-4B15-BA84-EAB584C2D393}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlotTest", "SlotTest\SlotTest.csproj", "{F79B5420-2A90-4AE3-A69D-4C87A8E0BFBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlotTest", "SlotTest\SlotTest.csproj", "{F79B5420-2A90-4AE3-A69D-4C87A8E0BFBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingTestProject", "ParkingTestProject\ParkingTestProject.csproj", "{121E7CE7-AA32-4088-8260-DFEDAA52C9CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F79B5420-2A90-4AE3-A69D-4C87A8E0BFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F79B5420-2A90-4AE3-A69D-4C87A8E0BFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F79B5420-2A90-4AE3-A69D-4C87A8E0BFBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{121E7CE7-AA32-4088-8260-DFEDAA52C9CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{121E7CE7-AA32-4088-8260-DFEDAA52C9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{121E7CE7-AA32-4088-8260-DFEDAA52C9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{121E7CE7-AA32-4088-8260-DFEDAA52C9CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
