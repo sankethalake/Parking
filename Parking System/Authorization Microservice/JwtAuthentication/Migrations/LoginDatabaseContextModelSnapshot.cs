@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JwtAuthentication.Migrations
 {
-    [DbContext(typeof(Login.LoginDatabaseContext))]
+    [DbContext(typeof(LoginDatabaseContext))]
     partial class LoginDatabaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

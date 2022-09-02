@@ -19,13 +19,5 @@ namespace JwtAuthentication.Database
         [Required(ErrorMessage = "Password is Required")]
         public string Password { get; set; }
 
-        public class LoginDatabaseContext : DbContext
-        {
-            public LoginDatabaseContext(DbContextOptions options) : base(options)
-            {
-
-            }
-            public DbSet<Login> Logins { get; set; }
-        }
     }
 }

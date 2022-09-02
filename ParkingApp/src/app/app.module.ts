@@ -28,6 +28,10 @@ import { SlotService } from './slot/slot.service';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { AddSlotComponent } from './slot/add-slot/add-slot.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { SharedService } from './shared.service';
+import { AuthInterceptor } from './Auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,9 @@ import { AddSlotComponent } from './slot/add-slot/add-slot.component';
     UpdateParkingComponent,
     HomeComponent,
     AdminComponent,
-    AddSlotComponent
+    AddSlotComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -59,10 +65,14 @@ import { AddSlotComponent } from './slot/add-slot/add-slot.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      progressBar:true
+      progressBar: true
     })
   ],
-  providers: [VehicleService,SlotService,SlotService],
+  providers: [VehicleService, SlotService, SlotService, SharedService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

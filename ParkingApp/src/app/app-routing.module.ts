@@ -13,19 +13,25 @@ import { AddVehicleComponent } from './vehicle/add-vehicle/add-vehicle.component
 import { AllVehiclesComponent } from './vehicle/all-vehicles/all-vehicles.component';
 import { GetVehicleComponent } from './vehicle/get-vehicle/get-vehicle.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
+import { AuthGuard } from './Auth/auth.guard';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
+  // { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'SignUp', component: RegisterComponent },
   { path: "home", component: HomeComponent },
   {
     path: "vehicle", component: VehicleComponent, children: [
       { path: 'search-vehicle', component: GetVehicleComponent },
-      { path: 'add-vehicle', component: AddVehicleComponent },
+      { path: 'add-vehicle', component: AddVehicleComponent, canActivate: [AuthGuard] },
       { path: 'all-vehicle', component: AllVehiclesComponent }
     ]
   },
   {
     path: "parkingSlot", component: SlotComponent, children: [
-      { path: 'add-slot', component: AddSlotComponent },
+      { path: 'add-slot', component: AddSlotComponent, canActivate: [AuthGuard] },
       { path: 'all-slots', component: GetSlotsComponent },
       { path: 'available-slots', component: ParkedSlotsComponent },
       { path: 'unavailable-slots', component: UnparkedSlotsComponent }

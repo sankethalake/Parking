@@ -3,6 +3,7 @@ import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { SlotService } from './slot.service';
+import { UserService } from '../User/user.service';
 
 @Component({
   selector: 'app-slot',
@@ -13,7 +14,7 @@ export class SlotComponent implements OnInit {
   slots: any = [];
   // tempArray: any = [];
   slot: any;
-  constructor(public service: SlotService, private shared: SharedService, private router: Router, private toastr: ToastrService) { }
+  constructor(public service: SlotService, private shared: SharedService, private router: Router, private toastr: ToastrService, public userService: UserService) { }
 
   ngOnInit(): void {
     this.GetSlots();

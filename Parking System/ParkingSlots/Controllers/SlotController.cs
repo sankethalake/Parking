@@ -22,7 +22,7 @@ namespace ParkingSlots.Controllers
             IEnumerable<Slot> slot = _dataRepository.GetAll();
             return Ok(slot);
         }
-        // GET: api/Employee/5
+        // GET: api/Employee/getSlot/{id}
         [HttpGet("getSlot/{id}", Name = "GetSlot")]
         public IActionResult GetSlot(int id)
         {
@@ -88,7 +88,7 @@ namespace ParkingSlots.Controllers
         }
 
         //DELETE: api/Employee/5
-        [HttpDelete()]
+        [HttpDelete("{slotId}")]
         public IActionResult Delete(int slotId)
         {
             Slot slot = _dataRepository.Get(slotId);

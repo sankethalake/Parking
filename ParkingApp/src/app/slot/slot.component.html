@@ -11,7 +11,8 @@
       <button type="button" (click)="GetSlots()" class="btn btn-light">All Slot</button>
       <button type="button" (click)="GetAvailableSlots()" class="btn btn-light">Available Slot</button>
       <!-- <button type="button" (click)="GetUnvailableSlots()" class="btn btn-light">Unavailable Slot</button> -->
-      <button type="button" routerLink="/parkingSlot/add-slot" class="btn btn-light">Add Slot</button>
+      <button type="button" routerLink="/parkingSlot/add-slot" *ngIf="userService.status()" class="btn btn-light">Add
+        Slot</button>
     </div>
   </div>
   <html>
@@ -49,7 +50,8 @@
               <div class="d-grid gap-2 d-md-block">
                 <button type="button" (click)="ToVehicle(s)" class="btn btn-light">Click To Park</button>
                 <button type="button" (click)="EndParking(s)" class="btn btn-light">End Parking</button>
-                <button type="button" (click)="DeleteSlot(s.slotID)" class="btn btn-light">Delete Slot</button>
+                <button type="button" *ngIf="userService.status()" (click)="DeleteSlot(s.slotID)"
+                  class="btn btn-light">Delete Slot</button>
               </div>
             </td>
           </tr>
