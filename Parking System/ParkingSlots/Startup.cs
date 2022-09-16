@@ -27,7 +27,9 @@ namespace ParkingSlots
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // dbContext Configuration
             services.AddDbContext<SlotContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:SlotDb"]));
+            // DI for slot repository
             services.AddScoped<ISlotRepository<Slot>, SlotManager>();
             services.AddControllers();
 

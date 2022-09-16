@@ -11,6 +11,7 @@ namespace Parking.Controllers
     [ApiController]
     public class ParkingController : ControllerBase
     {
+        // Parking Repository object to call repository methods
         public readonly IParkingRepository<Models.Parking> _dataRepository;
         public ParkingController(IParkingRepository<Models.Parking> dataRepository)
         {
@@ -37,7 +38,7 @@ namespace Parking.Controllers
             return Ok(new { message = "Parking allocated" });
         }
 
-        //PUT: api/Employee/5
+        //PUT: api/Parking/5
         [HttpPut()]
         public IActionResult Put([FromBody] Models.Parking parking)
         {
@@ -54,9 +55,9 @@ namespace Parking.Controllers
             return NoContent();
         }
 
-        //GET: api/Employee
+        //GET: api/Parking/5
 
-           [HttpGet("{getBySlot}")]
+        [HttpGet("{getBySlot}")]
             public IActionResult GetBySlot(int getBySlot)
         {
             Models.Parking parking = _dataRepository.GetBySlot(getBySlot);

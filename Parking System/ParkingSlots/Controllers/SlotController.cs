@@ -15,14 +15,16 @@ namespace ParkingSlots.Controllers
         {
             _dataRepository = dataRepository;
         }
-        // GET: api/Employee
+
+        // GET: api/Slot
         [HttpGet]
         public IActionResult GetAll()
         {
             IEnumerable<Slot> slot = _dataRepository.GetAll();
             return Ok(slot);
         }
-        // GET: api/Employee/getSlot/{id}
+
+        // GET: api/Slot/getSlot/{id}
         [HttpGet("getSlot/{id}", Name = "GetSlot")]
         public IActionResult GetSlot(int id)
         {
@@ -35,30 +37,30 @@ namespace ParkingSlots.Controllers
         }
 
         // GET: api/Employee/5
-        [HttpGet("getParkedSlots",Name = "getParkedSlots")]
-        public IActionResult GetParkedSlots()
-        {
-            IEnumerable<Slot> slot = _dataRepository.GetParkedSlots();
-            if (slot == null)
-            {
-                return NotFound("The Slot record couldn't be found.");
-            }
-            return Ok(slot);
-        }
+        //[HttpGet("getParkedSlots",Name = "getParkedSlots")]
+        //public IActionResult GetParkedSlots()
+        //{
+        //    IEnumerable<Slot> slot = _dataRepository.GetParkedSlots();
+        //    if (slot == null)
+        //    {
+        //        return NotFound("The Slot record couldn't be found.");
+        //    }
+        //    return Ok(slot);
+        //}
 
         // GET: api/Employee/5
-        [HttpGet("getUnparkedSlots", Name = "getUnparkedSlots")]
-        public IActionResult GetUnparkedSlots()
-        {
-            IEnumerable<Slot> slot = _dataRepository.GetUnparkedSlots();
-            if (slot == null)
-            {
-                return NotFound("The Slot record couldn't be found.");
-            }
-            return Ok(slot);
-        }
+        //[HttpGet("getUnparkedSlots", Name = "getUnparkedSlots")]
+        //public IActionResult GetUnparkedSlots()
+        //{
+        //    IEnumerable<Slot> slot = _dataRepository.GetUnparkedSlots();
+        //    if (slot == null)
+        //    {
+        //        return NotFound("The Slot record couldn't be found.");
+        //    }
+        //    return Ok(slot);
+        //}
 
-        // POST: api/Employee
+        // POST: api/Slot
         [HttpPost]
         public IActionResult Post([FromBody] Slot slot)
         {
@@ -70,7 +72,7 @@ namespace ParkingSlots.Controllers
             return Ok(new {message="Slot Created"});
         }
 
-        //PUT: api/Employee/5
+        //PUT: api/Slot/5
         [HttpPut()]
         public IActionResult Put([FromBody] Slot slot)
         {
@@ -87,7 +89,7 @@ namespace ParkingSlots.Controllers
             return NoContent();
         }
 
-        //DELETE: api/Employee/5
+        //DELETE: api/Slot/5
         [HttpDelete("{slotId}")]
         public IActionResult Delete(int slotId)
         {
